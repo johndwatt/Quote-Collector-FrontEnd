@@ -26,7 +26,7 @@ function QuoteContainer(props) {
                     <Quote key={quote._id} quote={quote} />
                 ))
             ) : (
-                <h3>Loading...</h3>
+                <h3 className='loading'>Loading...</h3>
             )}
         </div>
 
