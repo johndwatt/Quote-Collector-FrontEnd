@@ -5,10 +5,10 @@ import "./Quote.css"
 function Quote(props) {
     return (
         <div className="quote">
-            <p className="quote-content">Some content: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod possimus vitae totam voluptatibus incidunt pariatur illo, cupiditate minima odit voluptate placeat, vero alias dignissimos at. Ut necessitatibus qui recusandae culpa?</p>
+            <p className="quote-content">{props.quote.content}</p>
             <div className='quote-flex'>
-                <p className="quote-author">Author</p>
-                <p className="quote-tags">Tags</p>
+                <p className="quote-author">{props.quote.author}</p>
+                <p className="quote-tags">{props.quote.tags}</p>
             </div>
         </div>
     );
