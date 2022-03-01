@@ -36,6 +36,8 @@ function NewQuote(props) {
             }).catch(error => {
                 console.log(error);
             });
+
+        window.location = "/quotes";
     }
 
     return (
