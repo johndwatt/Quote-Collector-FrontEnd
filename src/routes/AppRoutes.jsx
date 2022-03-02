@@ -11,7 +11,7 @@ function AppRoutes(props) {
             {/* <Route path='/' exact element={} /> */}
             <Route exact path='/quotes' element={<QuoteContainer />}/>
             <Route exact path='/quotes/new' element={<NewQuote />}/>
-            {/* <Route /><EditQuote /> */}
+            <Route path='/quotes/:id/edit' element={<EditQuote />}/>
         </Routes>
 
     );
