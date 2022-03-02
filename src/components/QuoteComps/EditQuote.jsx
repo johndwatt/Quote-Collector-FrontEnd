@@ -1,26 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import "./EditQuote.css"
+import "../../styles/Form.css"
 
 const url = 'http://localhost:4000/quotes'
 
 function EditQuote(props) {
     const { id } = useParams();
 
-    axios.get(url + "/" + id)
-        .then(response => {
-            console.log(response);
-        }).catch(error => {
-            console.log(error);
-        });
+    const idUrl = url + "/" + id;
 
     const [content, setContent] = useState("");
     const [author, setAuthor] = useState("");
     const [tags, setTags] = useState([]);
 
-
+    useEffect(() => {
+        axios.get(idUrl)
+            .then(response => {
+                setContent(response.data.quote.content);
+                setAuthor(response.data.quote.author);
+                setTags(response.data.quote.tags);
+            }).catch(error => {
+                console.log(error);
+            });
+    }, []);
 
     const handleChangeContent = (e) => {
         setContent(e.target.value);
@@ -42,12 +46,14 @@ function EditQuote(props) {
             tags: tags,
         }
 
-        axios.put(url, quote)
+        axios.put(idUrl, quote)
             .then(response => {
                 console.log(response.data);
             }).catch(error => {
                 console.log(error);
             });
+
+        window.location = "/quotes";
     }
 
     return (
@@ -89,7 +95,7 @@ function EditQuote(props) {
                 <input
                     type='submit'
                     className='form-submit'
-                    value='Add Quote'/>
+                    value='Edit Quote'/>
             </form>
         </div>
 

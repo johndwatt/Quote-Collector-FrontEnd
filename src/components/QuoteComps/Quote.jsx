@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import "./Quote.css"
+import "../../styles/Quote.css"
 
 function Quote(props) {
     return (
@@ -8,7 +9,10 @@ function Quote(props) {
             <p className="quote-content">{props.quote.content}</p>
             <div className='quote-flex'>
                 <p className="quote-author">{props.quote.author}</p>
-                <p className="quote-tags">{props.quote.tags}</p>
+                <div className="quote-buttons">
+                    <Link to={{pathname: `/quotes/${props.quote._id}/edit`}}>Edit</Link> 
+                    <Link to={{pathname: `/quotes/${props.quote._id}/delete`}}>Delete</Link>
+                </div>
             </div>
         </div>
     );

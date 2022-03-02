@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import "./NewQuote.css"
+import "../../styles/Form.css"
 
 const url = 'http://localhost:4000/quotes'
 
