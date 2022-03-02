@@ -11,7 +11,7 @@ function Quote(props) {
                 <p className="quote-author">{props.quote.author}</p>
                 <div className="quote-buttons">
                     <Link to={{pathname: `/quotes/${props.quote._id}/edit`}}>Edit</Link> 
-                
+                    <Link to={{pathname: `/quotes/${props.quote._id}/delete`}}>Delete</Link>
                 </div>
             </div>
         </div>
