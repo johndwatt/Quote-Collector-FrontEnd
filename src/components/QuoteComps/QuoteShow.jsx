@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Quote from '../Quote/Quote';
+import Quote from './Quote';
 
-import "../QuoteContainer/QuoteContainer.css"
+import "../../styles/QuoteContainer.css"
 
 // NEED TO FIX URL => how do I get the quotes URL id to send get request to that specific URL? Do I need separate API folder to exact out some of this logic? Consider. 
 // Also consider if we need this AT ALL, could just go directly from the quotes page, but then how to access??

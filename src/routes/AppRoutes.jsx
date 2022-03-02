@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route, Redirect } from "react-router-dom";
 
-import QuoteContainer from '../components/QuoteContainer/QuoteContainer';
-import NewQuote from '../components/NewQuote/NewQuote';
-import EditQuote from "../components/EditQuote/EditQuote";
+import QuoteContainer from '../components/QuoteComps/QuoteContainer';
+import NewQuote from '../components/QuoteComps/NewQuote';
+import EditQuote from "../components/QuoteComps/EditQuote";
 
 function AppRoutes(props) {
     return (

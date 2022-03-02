@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Quote from '../Quote/Quote';
+import Quote from './Quote';
 
-import "./QuoteContainer.css"
+import "../../styles/QuoteContainer.css"
 
 const url = 'http://localhost:4000/quotes'
 

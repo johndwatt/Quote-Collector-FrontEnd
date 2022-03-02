@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import "./Quote.css"
+import "../../styles/Quote.css"
 
 function Quote(props) {
     return (

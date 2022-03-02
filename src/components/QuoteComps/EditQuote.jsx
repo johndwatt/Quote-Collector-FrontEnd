@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import "./EditQuote.css"
+import "../../styles/Form.css"
 
 const url = 'http://localhost:4000/quotes'
 
