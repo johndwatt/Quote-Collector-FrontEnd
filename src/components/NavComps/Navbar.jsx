@@ -8,6 +8,7 @@ function Navbar(props) {
         <nav className="navbar">
             <Link to='/' className='navbar-home'>Quote Collector</Link>
             <ul className='navbar-items'>
+                <Link to='/signup' className='navbar-item'>Signup</Link>
                 <Link to='/quotes' className='navbar-item'>My Quotes</Link>
                 <Link to='/quotes/new' className='navbar-item'>Add Quote</Link>
             </ul>
