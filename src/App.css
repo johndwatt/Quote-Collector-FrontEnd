@@ -8,6 +8,10 @@
 	animation: pulse 1s infinite;
 }
 
+.error {
+	color: red;
+}
+
 @keyframes pulse {
 	0% {
 		opacity: 1;
