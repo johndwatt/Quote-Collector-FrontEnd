@@ -9,6 +9,7 @@ function Signup(props) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleChangeUsername = (e) => {
         setUsername(e.target.value);
@@ -32,17 +33,20 @@ function Signup(props) {
 
         axios.post(url, user)
             .then(response => {
-                console.log(response.data);
+                console.log(response.data);     
+                window.location = "/quotes";
             }).catch(error => {
+                setError(error.message);
                 console.log(error);
             });
 
-        window.location = "/quotes";
+   
     }
 
     return (
         <div className='form-container'>
             <h2>Create a New Account</h2>
+            {error && <h3 className='error'>{error}</h3>}
             <form onSubmit={handleSubmit} className='form' >
                 <div className='input-container'>
                     <label>Username:</label>
