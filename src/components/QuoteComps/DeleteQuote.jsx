@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import Quote from './Quote';
 
 import "../../styles/Form.css"
 import "../../styles/Quote.css"
@@ -29,11 +28,12 @@ function DeleteQuote(props) {
         axios.delete(idUrl)
             .then(response => {
                 console.log(response.data);
+                window.location = "/quotes";
             }).catch(error => {
                 console.log(error);
             });
 
-        window.location = "/quotes";
+        
     }
 
     return (

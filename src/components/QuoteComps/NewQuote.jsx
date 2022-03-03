@@ -33,11 +33,12 @@ function NewQuote(props) {
         axios.post(url, quote)
             .then(response => {
                 console.log(response.data);
+                window.location = "/quotes";
             }).catch(error => {
                 console.log(error);
             });
 
-        window.location = "/quotes";
+        
     }
 
     return (
