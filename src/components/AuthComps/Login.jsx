@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { userState } from "../../recoil/atoms";
+import { useSetRecoilState } from "recoil";
 
 import "../../styles/Form.css"
-import reactDom from 'react-dom';
 
 const url = 'http://localhost:4000/login'
 
@@ -10,6 +11,8 @@ function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const setUser = useSetRecoilState(userState);
 
     const handleChangeEmail = (e) => {
         setEmail(e.target.value);
@@ -30,6 +33,8 @@ function Login(props) {
         axios.post(url, user)
             .then(response => {
                 console.log(response.data);
+                localStorage.setItem("uid", response.data.token);
+                setUser(response.data);
                 window.location = "/quotes";
             }).catch(error => {
                 setError(error.message);

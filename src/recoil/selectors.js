@@ -1,7 +1,7 @@
 import { selector } from 'recoil';
 import { userState } from './atoms';
 
-const authState = selector({
+export const authState = selector({
     key: 'authState',
     get: ({ get }) => {
         const user = get(userState);
@@ -13,5 +13,4 @@ const authState = selector({
     }
 });
 
-export default authState;
 

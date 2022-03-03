@@ -5,7 +5,9 @@ import "../../styles/Footer.css"
 function Footer(props) {
     return (
         <footer className="footer">
-            <h4 className='footer-content'>&copy; <a href="https://johndwatt.com/" target="_blank" className='footer-link'>John D. Watt</a></h4>
+            <h4 className='footer-content'>
+                &copy; <a href="https://johndwatt.com/" target="_blank" rel="noreferrer" className='footer-link'>John D. Watt</a>
+            </h4>
         </footer>
     );
 }
