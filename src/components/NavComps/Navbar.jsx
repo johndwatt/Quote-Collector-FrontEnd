@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import auth_service from '../../auth/auth_service';
 
 import "../../styles/Navbar.css"
 
 function Navbar(props) {
-    const [currentUser, setCurrentUser] = useState(null);
-
-    useEffect(() => {
-        const user = auth_service.getCurrentUser();
-        if (user) {
-            setCurrentUser(user);
-        }
-    }, [])
 
     const handleLogout = function (){
         auth_service.logout();
@@ -21,7 +13,8 @@ function Navbar(props) {
     return (
         <nav className="navbar">
             <Link to='/' className='navbar-home'>Quote Collector</Link>        
-            {currentUser ? (
+            {/* //THIS IS NOT SUFFICIENT - try using recoil instead and see how it functions */}
+            {props.user ? (
                 <ul className='navbar-items'>
                     <Link to='/quotes' className='navbar-item'>My Quotes</Link>
                     <Link to='/quotes/new' className='navbar-item'>Add Quote</Link>

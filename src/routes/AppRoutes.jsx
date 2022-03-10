@@ -11,21 +11,18 @@ import EditQuote from "../components/QuoteComps/EditQuote";
 import DeleteQuote from "../components/QuoteComps/DeleteQuote";
 
 function AppRoutes(props) {
+    //NEW ISSUE: Need to create some sort of auth required thing that blocks these routes when not logged in
 
-    // ISSUE: redirect is deprecated, try to think of new way to handle authrequired for app routes
-    // consider complete front end auth overhaul - LOOK INTO THIS
     return (
-        <Routes>
-            {/* <Route path='/' exact element={} /> */}
+        <Routes>            
             <Route exact path='/'  element={<Home />} />
-            <Route exact path='/signup' element={<Signup />} />
-            <Route exact path='/login' element={<Login />} />
             <Route exact path='/quotes' element={<QuoteContainer />}/>
             <Route exact path='/quotes/new' element={<NewQuote />}/>
             <Route path='/quotes/:id/edit' element={<EditQuote />}/>
             <Route path='/quotes/:id/delete' element={<DeleteQuote />}/>
-        </Routes>
-
+            <Route exact path='/signup' element={<Signup />} />
+            <Route exact path='/login' element={<Login />} />
+        </Routes>            
     );
 }
 
