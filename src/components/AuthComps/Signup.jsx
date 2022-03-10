@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import auth_service from '../../auth/auth_service';
+import { useNavigate } from 'react-router-dom';
 
 import "../../styles/Form.css"
-
-const url = 'http://localhost:4000/signup'
 
 function Signup(props) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const navigate = useNavigate();
 
     const handleChangeUsername = (e) => {
         setUsername(e.target.value);
@@ -22,25 +23,29 @@ function Signup(props) {
         setPassword(e.target.value);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const user = {
-            username: username,
-            email: email,
-            password: password,
-        }
+        try {
+            const user = {
+                username: username,
+                email: email,
+                password: password,
+            }
 
-        axios.post(url, user)
-            .then(response => {
-                console.log(response.data);     
-                window.location = "/quotes";
+            await auth_service.signup(user)
+            .then(() => {
+                //NEED TO ADD LOGIN FROM SIGNUP
+                navigate('/login');
             }).catch(error => {
-                setError(error.message);
                 console.log(error);
-            });
+                setError(error.message);
+            })
 
-   
+        } catch (error) {
+            console.log(error);
+            setError(error.message);
+        }
     }
 
     return (
