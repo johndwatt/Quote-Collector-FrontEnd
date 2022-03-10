@@ -1,6 +1,9 @@
 import { atom } from 'recoil';
+import auth_service from '../auth/auth_service';
 
-export const userState = atom({
-    key: "userState",
-    default: null,
+const userState = atom({
+    key: 'userState',
+    default: auth_service.getCurrentUser()
 });
+
+export { userState };
