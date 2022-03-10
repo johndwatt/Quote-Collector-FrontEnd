@@ -35,6 +35,7 @@ function Signup(props) {
 
             await auth_service.signup(user)
             .then(() => {
+                //NEED TO ADD LOGIN FROM SIGNUP
                 navigate('/login');
             }).catch(error => {
                 console.log(error);

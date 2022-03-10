@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import auth_service from '../../auth/auth_service';
 import { useNavigate } from 'react-router-dom';
 
+import { useSetRecoilState } from "recoil";
+import { userState } from "../../recoil/atoms";
+
 import "../../styles/Form.css"
 
 function Login(props) {
@@ -9,6 +12,7 @@ function Login(props) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    const setUser = useSetRecoilState(userState);
     const navigate = useNavigate();
 
     const handleChangeEmail = (e) => {
@@ -28,7 +32,9 @@ function Login(props) {
                 password: password,
             }
             await auth_service.login(user)
-            .then(() => {
+            .then(response => {
+                //this declares the recoil state and sets it to user to the correct person
+                setUser(userState);
                 navigate('/quotes');
             }).catch(error => {
                 console.log(error);
@@ -38,7 +44,6 @@ function Login(props) {
             console.log(error);
             setError(error.message);
         }
-        
     }
 
     return (

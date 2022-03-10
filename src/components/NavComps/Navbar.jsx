@@ -5,7 +5,8 @@ import auth_service from '../../auth/auth_service';
 import "../../styles/Navbar.css"
 
 function Navbar(props) {
-
+    const currentUser = props.user;
+    
     const handleLogout = function (){
         auth_service.logout();
     }
@@ -13,8 +14,7 @@ function Navbar(props) {
     return (
         <nav className="navbar">
             <Link to='/' className='navbar-home'>Quote Collector</Link>        
-            {/* //THIS IS NOT SUFFICIENT - try using recoil instead and see how it functions */}
-            {props.user ? (
+            {currentUser ? (
                 <ul className='navbar-items'>
                     <Link to='/quotes' className='navbar-item'>My Quotes</Link>
                     <Link to='/quotes/new' className='navbar-item'>Add Quote</Link>

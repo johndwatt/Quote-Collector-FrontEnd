@@ -11,17 +11,29 @@ import EditQuote from "../components/QuoteComps/EditQuote";
 import DeleteQuote from "../components/QuoteComps/DeleteQuote";
 
 function AppRoutes(props) {
-    //NEW ISSUE: Need to create some sort of auth required thing that blocks these routes when not logged in
+    const currentUser = props.user;
 
+    //NEW ISSUE: i need to redirect to login when a wrong route is hit rather than just leave them on a blank page - COULD CREATE COMPONENTS TO USE IF THEY ARE ALREADY LOGGED IN TO RENDER THOSE INSTEAD, Also ERROR HANDLING ON THOSE PAGES
     return (
         <Routes>            
-            <Route exact path='/'  element={<Home />} />
-            <Route exact path='/quotes' element={<QuoteContainer />}/>
-            <Route exact path='/quotes/new' element={<NewQuote />}/>
-            <Route path='/quotes/:id/edit' element={<EditQuote />}/>
-            <Route path='/quotes/:id/delete' element={<DeleteQuote />}/>
-            <Route exact path='/signup' element={<Signup />} />
-            <Route exact path='/login' element={<Login />} />
+            {currentUser ? (
+                <>
+                    <Route exact path='/'  element={<Home />} /> 
+                    <Route exact path='/quotes' element={<QuoteContainer />}/>
+                    <Route exact path='/quotes/new' element={<NewQuote />}/>
+                    <Route path='/quotes/:id/edit' element={<EditQuote />}/>
+                    <Route path='/quotes/:id/delete' element={<DeleteQuote />}/>
+                </>
+            ) : (
+                <>
+                    <Route exact path='/'  element={<Home />} /> 
+                    <Route exact path='/signup' element={<Signup />} />
+                    <Route exact path='/login' element={<Login />} />                
+                </>
+            )}
+
+           
+            
         </Routes>            
     );
 }
